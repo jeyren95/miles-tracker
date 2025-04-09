@@ -5,13 +5,22 @@ export enum Bank {
 	OCBC = "OCBC",
 }
 
-export type PointsFormProps = {
-	addRow(row: ConversionTableRowData): void; 
-}
-
 export type ConversionTableRowData = {
-	bank: Bank;
+	id: number;
+	bank: Bank | "";
 	points: number;
 	conversionRate: number;
 	miles: number;
+}
+
+export enum ConversionTableActionType {
+	INSERT,
+	DELETE,
+	UPDATE,
+	RESET,
+}
+ 
+export type ConversionTableAction = {
+	type: ConversionTableActionType; 
+	payload: ConversionTableRowData;
 }

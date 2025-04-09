@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+.home {
+	@apply flex justify-center;
+}
+
+.conversion-table {
+	@apply w-4xl;
+
+	select, input {
+		@apply w-full;
+	}
+}
+
