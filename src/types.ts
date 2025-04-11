@@ -1,3 +1,5 @@
+import { type ChangeEvent } from "react";
+
 export enum Bank {
 	CITIBANK = "Citibank",
 	DBS = "DBS",
@@ -11,7 +13,7 @@ export type ConversionTableRowData = {
 	points: number;
 	conversionRate: number;
 	miles: number;
-}
+};
 
 export enum ConversionTableActionType {
 	INSERT,
@@ -19,8 +21,21 @@ export enum ConversionTableActionType {
 	UPDATE,
 	RESET,
 }
- 
+
 export type ConversionTableAction = {
-	type: ConversionTableActionType; 
+	type: ConversionTableActionType;
 	payload: ConversionTableRowData;
-}
+};
+
+export type ConversionTableProps = {
+	onBankSelectChange: (
+		e: ChangeEvent<HTMLSelectElement>,
+		row: ConversionTableRowData,
+	) => void;
+	onPointsInputChange: (
+		e: ChangeEvent<HTMLInputElement>,
+		row: ConversionTableRowData,
+	) => void;
+	tableData: ConversionTableRowData[];
+	onDelete: (row: ConversionTableRowData) => void;
+};

@@ -1,14 +1,75 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-.home {
-	@apply flex justify-center;
+.main {
+  @apply flex justify-center px-5 md:px-0;
 }
 
-.conversion-table {
-	@apply w-4xl;
-
-	select, input {
-		@apply w-full;
-	}
+/** Table **/
+.table {
+  @apply w-full;
 }
 
+.table__header-cell {
+  @apply p-3 text-left;
+}
+
+.table__row {
+  @apply border-solid border-gray-300;
+}
+
+.table__header-row {
+  @apply border-b;
+}
+
+.table__body-row {
+  @apply border-t;
+}
+
+.table__cell {
+  @apply p-3;
+}
+
+/** Text input **/
+.input {
+  @apply px-2 py-1 outline-gray-200;
+}
+
+/** Select **/
+.select {
+  @apply px-2 py-1 outline-gray-200;
+}
+
+/** Buttons **/
+.button--bg-blue {
+  @apply bg-blue-500;
+}
+
+.button--bg-purple {
+  @apply bg-purple-500;
+}
+
+.button--text-white {
+  @apply text-white;
+}
+
+/** Icons **/
+.icon--color-red {
+  @apply text-red-500;
+}
+
+/** Summary page **/
+.summary-page__action-buttons {
+  @apply flex justify-end gap-5;
+}
+
+.summary-page__button {
+  @apply w-24 px-3 py-2;
+}
+
+.summary-page__conversion-table {
+  @apply mb-5;
+}
+
+.summary-page__button {
+  @apply rounded-md;
+}

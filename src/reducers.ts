@@ -1,6 +1,13 @@
-import { type ConversionTableRowData, type ConversionTableAction, ConversionTableActionType } from "./types";
+import {
+	type ConversionTableRowData,
+	type ConversionTableAction,
+	ConversionTableActionType,
+} from "./types";
 
-export function conversionTableReducer(state: ConversionTableRowData[], action: ConversionTableAction) {
+export function conversionTableReducer(
+	state: ConversionTableRowData[],
+	action: ConversionTableAction,
+) {
 	switch (action.type) {
 		case ConversionTableActionType.INSERT:
 			return [...state, action.payload];

@@ -1,9 +1,9 @@
-import ConversionTable from "./components/ConversionTable";
+import SummaryPage from "./pages/SummaryPage";
 
 function App() {
   return (
-		<div className="home">
-			<ConversionTable />
+		<div className="main">
+			<SummaryPage />
 		</div>
   )
 }
