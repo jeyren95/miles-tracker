@@ -18,6 +18,7 @@ const BANK_OPTIONS = [
 	{ value: "", text: "--Select a bank--" },
 	...Object.values(Bank).map((b) => ({ value: b, text: b })),
 ];
+const MIN_POINTS = 0;
 
 function ConversionTable({
 	tableData,
@@ -51,6 +52,7 @@ function ConversionTable({
 								value={r.points}
 								name="points"
 								id="points"
+								min={MIN_POINTS}
 							/>
 						</TableCell>
 						<TableCell>{r.conversionRate}</TableCell>

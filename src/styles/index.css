@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 .main {
-  @apply flex justify-center px-5 md:px-0;
+  @apply h-screen;
 }
 
 /** Table **/
 .table {
-  @apply w-full;
+  @apply w-full text-sm sm:text-base;
 }
 
 .table__header-cell {
@@ -58,18 +58,34 @@
 }
 
 /** Summary page **/
+.summary-page {
+  @apply w-11/12 md:w-5/6 ml-auto mr-auto mt-32;
+}
+
 .summary-page__action-buttons {
-  @apply flex justify-end gap-5;
+  @apply flex gap-2 md:gap-5;
 }
 
 .summary-page__button {
-  @apply w-24 px-3 py-2;
+  @apply w-14 sm:w-18 py-2 text-xs sm:text-sm;
 }
 
 .summary-page__conversion-table {
-  @apply mb-5;
+  @apply mt-3 md:mt-10 overflow-auto;
 }
 
 .summary-page__button {
   @apply rounded-md;
+}
+
+.summary-page__miles-summary {
+  @apply flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-center;
+}
+
+.summary-page__miles-summary-title {
+  @apply text-lg sm:text-xl;
+}
+
+.summary-page__miles-sum {
+  @apply underline ml-1 mr-1 text-xl sm:text-4xl sm:ml-2 sm:mr-2;
 }

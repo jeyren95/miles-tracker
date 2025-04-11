@@ -33,7 +33,7 @@ function SummaryPage() {
 		const conversionRate = e.target.value
 			? CONVERSION_RATES[e.target.value as Bank]
 			: 0;
-		const miles = conversionRate * row.points;
+		const miles = conversionRate * Number(row.points);
 		const payload: ConversionTableRowData = { ...row, conversionRate, miles };
 		const action: ConversionTableAction = {
 			type: ConversionTableActionType.UPDATE,
@@ -46,9 +46,16 @@ function SummaryPage() {
 		e: ChangeEvent<HTMLInputElement>,
 		row: ConversionTableRowData,
 	) {
-		const points = Number(e.target.value);
-		const miles = points * row.conversionRate;
-		const payload: ConversionTableRowData = { ...row, points, miles };
+		let payload: ConversionTableRowData;
+
+		if (e.target.value === "") {
+			payload = { ...row, points: e.target.value };
+		} else {
+			const points = Number(e.target.value);
+			const miles = points * row.conversionRate;
+			payload = { ...row, points, miles };
+		}
+
 		const action: ConversionTableAction = {
 			type: ConversionTableActionType.UPDATE,
 			payload,
@@ -81,8 +88,33 @@ function SummaryPage() {
 		dispatch(action);
 	}
 
+	const milesSum = tableData.reduce((acc, curr) => acc + curr.miles, 0);
+
 	return (
 		<div className="summary-page">
+			<div className="summary-page__miles-summary">
+				<h1 className="summary-page__miles-summary-title">
+					You have accumulated{" "}
+					<span className="summary-page__miles-sum">{milesSum}</span> miles.
+				</h1>
+
+				<div className="summary-page__action-buttons">
+					<Button
+						className="summary-page__button button--bg-blue button--text-white"
+						type="button"
+						onClick={handleInsert}
+					>
+						Add
+					</Button>
+					<Button
+						className="summary-page__button button--bg-purple button--text-white"
+						type="button"
+						onClick={handleReset}
+					>
+						Reset
+					</Button>
+				</div>
+			</div>
 			<div className="summary-page__conversion-table">
 				<ConversionTable
 					tableData={tableData}
@@ -90,22 +122,6 @@ function SummaryPage() {
 					onPointsInputChange={handlePointsInputChange}
 					onDelete={handleDelete}
 				/>
-			</div>
-			<div className="summary-page__action-buttons">
-				<Button
-					className="summary-page__button button--bg-blue button--text-white"
-					type="button"
-					onClick={handleInsert}
-				>
-					Add
-				</Button>
-				<Button
-					className="summary-page__button button--bg-purple button--text-white"
-					type="button"
-					onClick={handleReset}
-				>
-					Reset
-				</Button>
 			</div>
 		</div>
 	);

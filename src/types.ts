@@ -10,8 +10,8 @@ export enum Bank {
 export type ConversionTableRowData = {
 	id: number;
 	bank: Bank | "";
-	points: number;
-	conversionRate: number;
+	points: number | ""; 
+	conversionRate: number; 
 	miles: number;
 };
 
