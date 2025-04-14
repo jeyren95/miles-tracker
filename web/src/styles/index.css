@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+.main {
+	@apply h-screen px-20;
+}
+
+/** Summary page **/
+.summary-page__action-buttons {
+	@apply flex gap-2 md:gap-5;
+}
+
+.summary-page__button {
+	@apply w-14 sm:w-18 py-2 text-xs sm:text-sm rounded-md;
+}
+
+.summary-page__conversion-table {
+	@apply mt-3 md:mt-10 overflow-auto;
+}
+
+.summary-page__miles-summary {
+	@apply flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-center;
+}
+
+.summary-page__miles-summary-title {
+	@apply text-lg sm:text-xl;
+}
+
+.summary-page__miles-sum {
+	@apply underline ml-1 mr-1 text-xl sm:text-4xl sm:ml-2 sm:mr-2;
+}
+
+/** Goals page **/
+.goals-page__action-buttons {
+	@apply flex gap-2 md:gap-5;
+}
+
+.goals-page__button {
+	@apply w-14 sm:w-18 py-2 text-xs sm:text-sm rounded-md;
+}
+
+.goals-page__goals-table-header {
+	@apply flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-center;
+}
+
+.goals-page__goals-table-title {
+	@apply text-lg sm:text-xl; 
+}
+
+.goals-page__goals-table {
+	@apply mt-3 md:mt-10 overflow-auto;
+}
+
+/** Nav menu **/ 
+.nav-menu {
+	@apply mb-30;
+}
+
+/** Table **/
+.table {
+	@apply w-full text-sm sm:text-base;
+}
+
+.table__header-cell {
+	@apply p-3 text-left;
+}
+
+.table__row {
+	@apply border-solid border-gray-300;
+}
+
+.table__header-row {
+	@apply border-b;
+}
+
+.table__body-row {
+	@apply border-t;
+}
+
+.table__cell {
+	@apply p-3;
+}
+
+/** Text input **/
+.input {
+	@apply px-2 py-1 outline-gray-200;
+}
+
+/** Select **/
+.select {
+	@apply px-2 py-1 outline-gray-200;
+}
+
+/** Buttons **/
+.button--bg-blue {
+	@apply bg-blue-500;
+}
+
+.button--bg-purple {
+	@apply bg-purple-500;
+}
+
+.button--text-white {
+	@apply text-white;
+}
+
+/** Icons **/
+.icon--color-red {
+	@apply text-red-500;
+}
