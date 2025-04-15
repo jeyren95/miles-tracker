@@ -1,7 +1,8 @@
-import { type ChangeEvent, useReducer } from "react";
+import { type ChangeEvent, useReducer, useState } from "react";
 
 import GoalsTable from "../components/GoalsTable";
 import Button from "../components/common/Button";
+import ProgressionModal from "../components/ProgressionModal";
 
 import { goalsTableReducer } from "../reducers";
 import {
@@ -21,6 +22,8 @@ const DEFAULT_ROW: GoalsTableRowData = {
 
 function GoalsPage() {
 	const [tableData, dispatch] = useReducer(goalsTableReducer, [DEFAULT_ROW]);
+	const [selectedRow, setSelectedRow] = useState<GoalsTableRowData | null>(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	function handleInsert() {
 		const action: ReducerAction<GoalsTableActionType, GoalsTableRowData> = {
@@ -56,6 +59,16 @@ function GoalsPage() {
 		dispatch(action);
 	}
 
+	function handleOpenModal(row: GoalsTableRowData) {
+		setSelectedRow(row);
+		setIsModalOpen(true);
+	}
+
+	function handleCloseModal() {
+		setSelectedRow(null);
+		setIsModalOpen(false);
+	}
+
 	return (
 		<div className="goals-page">
 			<div className="goals-page__goal-tracking">
@@ -85,8 +98,10 @@ function GoalsPage() {
 						tableData={tableData}
 						onSelectChange={handleSelectChange}
 						onDelete={handleDelete}
+						onViewProgressionClick={handleOpenModal}
 					/>
 				</div>
+				{isModalOpen && <ProgressionModal onClose={handleCloseModal} selectedRow={selectedRow} />}
 			</div>
 		</div>
 	);

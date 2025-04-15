@@ -12,30 +12,32 @@ import Select from "./common/Select";
 import Button from "./common/Button";
 
 import { type GoalsTableProps, GoalsTableHeader, ClassType, TripType } from "../types/goals";
+import { TRIP_TYPE_TO_TEXT, CLASS_TYPE_TO_TEXT } from "../utils";
 
 const CLASS_TYPE_OPTIONS = [
 	{ value: "", text: "--Select flight class--" },
 	...Object.values(ClassType).map((c) => ({
 		value: c,
-		text: c,
+		text: CLASS_TYPE_TO_TEXT[c],
 	})),
 ];
 const TRIP_TYPE_OPTIONS = [
 	{ value: "", text: "--Select trip type--" },
 	...Object.values(TripType).map((t) => ({
 		value: t, 
-		text: t,
+		text: TRIP_TYPE_TO_TEXT[t],
 	}))
 ];
 const CITY_OPTIONS = [
 	{ value: "", text: "--Select city--" },
-	...["Osaka", "Tokyo"].map((c) => ({ value: c, text: c })),
+	...["Singapore - SIN", "Tokyo (Haneda Intl) - HND"].map((c) => ({ value: c, text: c })),
 ];
 
 function GoalsTable({
 	tableData,
 	onSelectChange,
 	onDelete,
+	onViewProgressionClick,
 }: GoalsTableProps) {
 	return (
 		<Table className="goals-table">
@@ -84,7 +86,7 @@ function GoalsTable({
 							</Select>
 						</TableCell>
 						<TableCell>
-							<Button type="button">View Progression</Button>
+							<Button type="button" onClick={() => onViewProgressionClick(r)}>View Progression</Button>
 						</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (

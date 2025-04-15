@@ -8,15 +8,15 @@ export enum GoalsTableActionType {
 }
 
 export enum ClassType {
-	ECONOMY = "Economy",
-	PREMIUM_ECONOMY = "Premium Economy",
-	BUSINESS = "Business",
-	FIRST_CLASS = "First Class",
+	ECONOMY = "EN",
+	PREMIUM_ECONOMY = "PN",
+	BUSINESS = "BN",
+	FIRST_CLASS = "FN",
 }
 
 export enum TripType {
-	ONE_WAY = "One-way",
-	RETURN = "Return",
+	ONE_WAY = "O",
+	RETURN = "R",
 }
 
 export enum GoalsTableHeader {
@@ -38,4 +38,19 @@ export type GoalsTableProps = {
 	tableData: GoalsTableRowData[];
 	onSelectChange: (e: ChangeEvent<HTMLSelectElement>, row: GoalsTableRowData) => void;
 	onDelete: (row: GoalsTableRowData) => void; 
+	onViewProgressionClick: (r: GoalsTableRowData) => void;
+}
+
+export type ProgressionModalProps = {
+	selectedRow: GoalsTableRowData | null;
+	onClose: () => void;
+}
+
+export type GetMilesRes = {
+	classType: ClassType;
+	tripType: TripType;
+	miles: {
+		description: string;
+		amount: number;
+	}[];
 }
