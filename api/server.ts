@@ -9,6 +9,17 @@ const server = http.createServer();
 server.on("request", (req, res) => {
   const parsedUrl = new URL(req.url || "", process.env.BASE_URL);
 
+  // set cors
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+
+  if (req.method === "OPTIONS") {
+    res.statusCode = 204;
+    res.end();
+    return;
+  }
+
   if (parsedUrl.pathname === "/miles") {
     getMiles(parsedUrl, res);
   } else {
