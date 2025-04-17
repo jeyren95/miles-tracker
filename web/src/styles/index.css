@@ -43,16 +43,16 @@
 }
 
 .goals-page__goals-table-title {
-	@apply text-lg sm:text-xl; 
+	@apply text-lg sm:text-xl;
 }
 
 .goals-page__goals-table {
 	@apply mt-3 md:mt-10 overflow-auto;
 }
 
-/** Nav menu **/ 
-.nav-menu {
-	@apply mb-30;
+/** Nav menu **/
+.nav-tabs {
+	@apply mb-28;
 }
 
 /** Table **/

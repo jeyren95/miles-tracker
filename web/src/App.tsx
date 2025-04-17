@@ -1,24 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import HomePage from "./pages/HomePage";
-import GoalsPage from "./pages/GoalsPage"; 
+import GoalsPage from "./pages/GoalsPage";
 
-import NavMenu from "./components/NavMenu";
+import NavTabs from "./components/NavTabs";
 
 import { Pathname } from "./types/common";
 
 function App() {
-  return (
+	return (
 		<div className="main">
 			<BrowserRouter>
-				<NavMenu />
+				<NavTabs />
 				<Routes>
 					<Route path={Pathname.HOME} element={<HomePage />} />
 					<Route path={Pathname.GOALS} element={<GoalsPage />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
-  )
+	);
 }
 
 export default App;
