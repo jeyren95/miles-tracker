@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .main {
-	@apply h-screen px-20;
+	@apply h-screen px-5 sm:px-20;
 }
 
 /** Home page **/
@@ -13,12 +13,8 @@
 	@apply w-14 sm:w-18 py-2 text-xs sm:text-sm rounded-md;
 }
 
-.home-page__conversion-table {
-	@apply mt-3 md:mt-10 overflow-auto;
-}
-
 .home-page__miles-summary {
-	@apply flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-center;
+	@apply mb-3 sm:mb-10 flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-center;
 }
 
 .home-page__miles-summary-title {
