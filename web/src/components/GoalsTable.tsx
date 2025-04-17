@@ -4,14 +4,18 @@ import {
 	Table,
 	TableBody,
 	TableRow,
-	TableHeader,
-	TableHeaderCell,
+	TableHead,
 	TableCell,
 } from "./common/table";
 import Select from "./common/Select";
 import Button from "./common/Button";
 
-import { type GoalsTableProps, GoalsTableHeader, ClassType, TripType } from "../types/goals";
+import {
+	type GoalsTableProps,
+	GoalsTableHeader,
+	ClassType,
+	TripType,
+} from "../types/goals";
 import { TRIP_TYPE_TO_TEXT, CLASS_TYPE_TO_TEXT } from "../utils";
 
 const CLASS_TYPE_OPTIONS = [
@@ -24,13 +28,16 @@ const CLASS_TYPE_OPTIONS = [
 const TRIP_TYPE_OPTIONS = [
 	{ value: "", text: "--Select trip type--" },
 	...Object.values(TripType).map((t) => ({
-		value: t, 
+		value: t,
 		text: TRIP_TYPE_TO_TEXT[t],
-	}))
+	})),
 ];
 const CITY_OPTIONS = [
 	{ value: "", text: "--Select city--" },
-	...["Singapore - SIN", "Tokyo (Haneda Intl) - HND"].map((c) => ({ value: c, text: c })),
+	...["Singapore - SIN", "Tokyo (Haneda Intl) - HND"].map((c) => ({
+		value: c,
+		text: c,
+	})),
 ];
 
 function GoalsTable({
@@ -41,11 +48,13 @@ function GoalsTable({
 }: GoalsTableProps) {
 	return (
 		<Table className="goals-table">
-			<TableHeader>
+			<TableHead>
 				<TableRow className="table__header-row">
-					{Object.values(GoalsTableHeader).map((h) => <TableHeaderCell key={h}>{h}</TableHeaderCell>)}
+					{Object.values(GoalsTableHeader).map((h) => (
+						<TableCell key={h}>{h}</TableCell>
+					))}
 				</TableRow>
-			</TableHeader>
+			</TableHead>
 			<TableBody>
 				{tableData.map((r) => (
 					<TableRow key={r.id} className="table__body-row">
@@ -86,7 +95,9 @@ function GoalsTable({
 							</Select>
 						</TableCell>
 						<TableCell>
-							<Button type="button" onClick={() => onViewProgressionClick(r)}>View Progression</Button>
+							<Button type="button" onClick={() => onViewProgressionClick(r)}>
+								View Progression
+							</Button>
 						</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (

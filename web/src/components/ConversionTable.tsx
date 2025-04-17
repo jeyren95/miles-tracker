@@ -6,12 +6,15 @@ import {
 	Table,
 	TableBody,
 	TableRow,
-	TableHeader,
+	TableHead,
 	TableCell,
-	TableHeaderCell,
 } from "./common/table";
 
-import { Bank, type ConversionTableProps } from "../types/home";
+import {
+	Bank,
+	ConversionTableHead,
+	type ConversionTableProps,
+} from "../types/home";
 
 const BANK_OPTIONS = [
 	{ value: "", text: "--Select a bank--" },
@@ -26,15 +29,14 @@ function ConversionTable({
 	onDelete,
 }: ConversionTableProps) {
 	return (
-		<Table className="summary-page__conversion-table">
-			<TableHeader>
-				<TableRow className="table__header-row">
-					<TableHeaderCell>Bank</TableHeaderCell>
-					<TableHeaderCell>Points</TableHeaderCell>
-					<TableHeaderCell>Conversion rate</TableHeaderCell>
-					<TableHeaderCell>Miles</TableHeaderCell>
+		<Table className="home-page__conversion-table">
+			<TableHead>
+				<TableRow className="table__head-row">
+					{Object.values(ConversionTableHead).map((h) => (
+						<TableCell>{h}</TableCell>
+					))}
 				</TableRow>
-			</TableHeader>
+			</TableHead>
 			<TableBody>
 				{tableData.map((r) => (
 					<TableRow className="table__body-row" key={r.id}>

@@ -4,28 +4,28 @@
 	@apply h-screen px-20;
 }
 
-/** Summary page **/
-.summary-page__action-buttons {
+/** Home page **/
+.home-page__action-buttons {
 	@apply flex gap-2 md:gap-5;
 }
 
-.summary-page__button {
+.home-page__button {
 	@apply w-14 sm:w-18 py-2 text-xs sm:text-sm rounded-md;
 }
 
-.summary-page__conversion-table {
+.home-page__conversion-table {
 	@apply mt-3 md:mt-10 overflow-auto;
 }
 
-.summary-page__miles-summary {
+.home-page__miles-summary {
 	@apply flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-center;
 }
 
-.summary-page__miles-summary-title {
+.home-page__miles-summary-title {
 	@apply text-lg sm:text-xl;
 }
 
-.summary-page__miles-sum {
+.home-page__miles-sum {
 	@apply underline ml-1 mr-1 text-xl sm:text-4xl sm:ml-2 sm:mr-2;
 }
 
@@ -60,7 +60,7 @@
 	@apply w-full text-sm sm:text-base;
 }
 
-.table__header-cell {
+.table__head-cell {
 	@apply p-3 text-left;
 }
 
@@ -68,7 +68,7 @@
 	@apply border-solid border-gray-300;
 }
 
-.table__header-row {
+.table__head-row {
 	@apply border-b;
 }
 

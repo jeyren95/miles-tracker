@@ -21,7 +21,7 @@ function NavTabs() {
 		>
 			{Object.entries(PATHNAME_TO_TEXT).map(([pathname, text]) => (
 				<Tab
-					className="nav-tabs__tab"
+					key={pathname}
 					label={<Link to={pathname}>{text}</Link>}
 				/>
 			))}

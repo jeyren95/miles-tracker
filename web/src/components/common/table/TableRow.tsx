@@ -1,8 +1,13 @@
-import { type ComponentPropsWithoutRef } from "react";
+import { type ComponentProps } from "react";
+import { TableRow as MuiTableRow } from "@mui/material";
 import clsx from "clsx";
 
-function TableRow({ children, className }: ComponentPropsWithoutRef<"tr">) {
-	return <tr className={clsx("table__row", className)}>{children}</tr>
+function TableRow({ children, className }: ComponentProps<typeof MuiTableRow>) {
+	return (
+		<MuiTableRow className={clsx("table__row", className)}>
+			{children}
+		</MuiTableRow>
+	);
 }
 
 export default TableRow;

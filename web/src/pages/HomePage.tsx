@@ -91,23 +91,23 @@ function HomePage() {
 	const milesSum = tableData.reduce((acc, curr) => acc + curr.miles, 0);
 
 	return (
-		<div className="summary-page">
-			<div className="summary-page__miles-summary">
-				<h1 className="summary-page__miles-summary-title">
+		<div className="home-page">
+			<div className="home-page__miles-summary">
+				<h1 className="home-page__miles-summary-title">
 					You have accumulated
-					<span className="summary-page__miles-sum">{milesSum}</span> miles.
+					<span className="home-page__miles-sum">{milesSum}</span> miles.
 				</h1>
 
-				<div className="summary-page__action-buttons">
+				<div className="home-page__action-buttons">
 					<Button
-						className="summary-page__button button--bg-blue button--text-white"
+						className="home-page__button button--bg-blue button--text-white"
 						type="button"
 						onClick={handleInsert}
 					>
 						Add
 					</Button>
 					<Button
-						className="summary-page__button button--bg-purple button--text-white"
+						className="home-page__button button--bg-purple button--text-white"
 						type="button"
 						onClick={handleReset}
 					>
@@ -115,7 +115,7 @@ function HomePage() {
 					</Button>
 				</div>
 			</div>
-			<div className="summary-page__conversion-table">
+			<div className="home-page__conversion-table">
 				<ConversionTable
 					tableData={tableData}
 					onBankSelectChange={handleBankSelectChange}

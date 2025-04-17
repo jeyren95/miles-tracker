@@ -10,8 +10,8 @@ export enum Bank {
 export type ConversionTableRowData = {
 	id: number;
 	bank: Bank | "";
-	points: number | ""; 
-	conversionRate: number; 
+	points: number | "";
+	conversionRate: number;
 	miles: number;
 };
 
@@ -34,3 +34,10 @@ export type ConversionTableProps = {
 	tableData: ConversionTableRowData[];
 	onDelete: (row: ConversionTableRowData) => void;
 };
+
+export enum ConversionTableHead {
+	BANK = "Bank",
+	POINTS = "Points",
+	CONVERSION_RATE = "Conversion rate",
+	MILES = "Miles",
+}

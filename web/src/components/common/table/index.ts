@@ -1,8 +1,7 @@
 import Table from "./Table";
 import TableBody from "./TableBody";
 import TableCell from "./TableCell";
-import TableHeader from "./TableHeader";
-import TableHeaderCell from "./TableHeaderCell";
+import TableHead from "./TableHead";
 import TableRow from "./TableRow";
 
-export { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow };
+export { Table, TableBody, TableCell, TableHead, TableRow };
