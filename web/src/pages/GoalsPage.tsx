@@ -1,7 +1,7 @@
 import { type ChangeEvent, useReducer, useState } from "react";
 
 import GoalsTable from "../components/GoalsTable";
-import Button from "../components/common/Button";
+import { Button } from "../components/common/button";
 import ProgressionModal from "../components/ProgressionModal";
 
 import { goalsTableReducer } from "../reducers";

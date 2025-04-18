@@ -1,4 +1,4 @@
-import { AiOutlineDelete } from "react-icons/ai";
+import { DeleteOutlined as DeleteOutlinedIcon } from "@mui/icons-material";
 
 import {
 	Table,
@@ -8,7 +8,7 @@ import {
 	TableCell,
 } from "./common/table";
 import Select from "./common/Select";
-import Button from "./common/Button";
+import { Button, IconButton } from "./common/button";
 
 import {
 	type GoalsTableProps,
@@ -101,10 +101,9 @@ function GoalsTable({
 						</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (
-								<AiOutlineDelete
-									className="icon--color-red"
-									onClick={() => onDelete(r)}
-								/>
+								<IconButton onClick={() => onDelete(r)}>
+									<DeleteOutlinedIcon className="icon--color-red" />
+								</IconButton>
 							)}
 						</TableCell>
 					</TableRow>

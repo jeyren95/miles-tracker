@@ -1,4 +1,4 @@
-import { AiOutlineDelete } from "react-icons/ai";
+import { DeleteOutlined as DeleteOutlinedIcon } from "@mui/icons-material";
 
 import Select from "./common/Select";
 import Input from "./common/Input";
@@ -9,6 +9,7 @@ import {
 	TableHead,
 	TableCell,
 } from "./common/table";
+import { IconButton } from "./common/button";
 
 import {
 	Bank,
@@ -40,7 +41,7 @@ function ConversionTable({
 			<TableBody>
 				{tableData.map((r) => (
 					<TableRow hover key={r.id}>
-						<TableCell> 
+						<TableCell>
 							<Select
 								options={BANK_OPTIONS}
 								onChange={(e) => onBankSelectChange(e, r)}
@@ -60,10 +61,9 @@ function ConversionTable({
 						<TableCell>{r.miles}</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (
-								<AiOutlineDelete
-									className="icon--color-red"
-									onClick={() => onDelete(r)}
-								/>
+								<IconButton onClick={() => onDelete(r)}>
+									<DeleteOutlinedIcon className="icon--color-red" />
+								</IconButton>
 							)}
 						</TableCell>
 					</TableRow>

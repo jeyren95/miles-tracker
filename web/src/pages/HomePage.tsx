@@ -1,7 +1,7 @@
 import { type ChangeEvent, useReducer } from "react";
 
 import ConversionTable from "../components/ConversionTable";
-import Button from "../components/common/Button";
+import { Button } from "../components/common/button";
 
 import { conversionTableReducer } from "../reducers";
 import { type ReducerAction } from "../types/common";
