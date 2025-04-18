@@ -61,7 +61,7 @@ function ConversionTable({
 						<TableCell>{r.miles}</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (
-								<IconButton onClick={() => onDelete(r)}>
+								<IconButton aria-label="delete" onClick={() => onDelete(r)}>
 									<DeleteOutlinedIcon className="icon--color-red" />
 								</IconButton>
 							)}
