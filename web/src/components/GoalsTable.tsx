@@ -101,8 +101,8 @@ function GoalsTable({
 						</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (
-								<IconButton aria-label="delete" onClick={() => onDelete(r)}>
-									<DeleteOutlinedIcon className="icon--color-red" />
+								<IconButton size="small" aria-label="delete" onClick={() => onDelete(r)}>
+									<DeleteOutlinedIcon className="icon--color-red" fontSize="inherit" />
 								</IconButton>
 							)}
 						</TableCell>
