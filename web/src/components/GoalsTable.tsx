@@ -12,7 +12,7 @@ import Button from "./common/Button";
 
 import {
 	type GoalsTableProps,
-	GoalsTableHeader,
+	GoalsTableHead,
 	ClassType,
 	TripType,
 } from "../types/goals";
@@ -47,17 +47,17 @@ function GoalsTable({
 	onViewProgressionClick,
 }: GoalsTableProps) {
 	return (
-		<Table className="goals-table">
+		<Table>
 			<TableHead>
-				<TableRow className="table__header-row">
-					{Object.values(GoalsTableHeader).map((h) => (
+				<TableRow>
+					{Object.values(GoalsTableHead).map((h) => (
 						<TableCell key={h}>{h}</TableCell>
 					))}
 				</TableRow>
 			</TableHead>
 			<TableBody>
 				{tableData.map((r) => (
-					<TableRow key={r.id} className="table__body-row">
+					<TableRow key={r.id}>
 						<TableCell>
 							<Select
 								name="origin"

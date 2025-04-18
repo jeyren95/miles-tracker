@@ -19,11 +19,13 @@ export enum TripType {
 	RETURN = "R",
 }
 
-export enum GoalsTableHeader {
+export enum GoalsTableHead {
 	ORIGIN = "Origin",
 	DESTINATION = "Destination",
 	CLASS_TYPE = "Flight class",
 	TRIP_TYPE = "Trip type",
+	VIEW_PROGRESSION = "",
+	DELETE_ICON = "",
 }
 
 export type GoalsTableRowData = {
@@ -32,19 +34,22 @@ export type GoalsTableRowData = {
 	destination: string;
 	classType: ClassType | "";
 	tripType: TripType | "";
-}
+};
 
 export type GoalsTableProps = {
 	tableData: GoalsTableRowData[];
-	onSelectChange: (e: ChangeEvent<HTMLSelectElement>, row: GoalsTableRowData) => void;
-	onDelete: (row: GoalsTableRowData) => void; 
+	onSelectChange: (
+		e: ChangeEvent<HTMLSelectElement>,
+		row: GoalsTableRowData,
+	) => void;
+	onDelete: (row: GoalsTableRowData) => void;
 	onViewProgressionClick: (r: GoalsTableRowData) => void;
-}
+};
 
 export type ProgressionModalProps = {
 	selectedRow: GoalsTableRowData | null;
 	onClose: () => void;
-}
+};
 
 export type GetMilesRes = {
 	classType: ClassType;
@@ -53,4 +58,4 @@ export type GetMilesRes = {
 		description: string;
 		amount: number;
 	}[];
-}
+};

@@ -29,18 +29,18 @@ function ConversionTable({
 	onDelete,
 }: ConversionTableProps) {
 	return (
-		<Table className="home-page__conversion-table">
+		<Table>
 			<TableHead>
-				<TableRow className="table__head-row">
+				<TableRow>
 					{Object.values(ConversionTableHead).map((h) => (
-						<TableCell>{h}</TableCell>
+						<TableCell key={h}>{h}</TableCell>
 					))}
 				</TableRow>
 			</TableHead>
 			<TableBody>
 				{tableData.map((r) => (
-					<TableRow className="table__body-row" key={r.id}>
-						<TableCell>
+					<TableRow hover key={r.id}>
+						<TableCell> 
 							<Select
 								options={BANK_OPTIONS}
 								onChange={(e) => onBankSelectChange(e, r)}

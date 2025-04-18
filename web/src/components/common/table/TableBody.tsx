@@ -3,14 +3,15 @@ import { TableBody as MuiTableBody } from "@mui/material";
 import clsx from "clsx";
 
 function TableBody({
-	children,
-	className,
+  children,
+  className,
+  ...props
 }: ComponentProps<typeof MuiTableBody>) {
-	return (
-		<MuiTableBody className={clsx("table__body", className)}>
-			{children}
-		</MuiTableBody>
-	);
+  return (
+    <MuiTableBody className={clsx("table__body", className)} {...props}>
+      {children}
+    </MuiTableBody>
+  );
 }
 
 export default TableBody;

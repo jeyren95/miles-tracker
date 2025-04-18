@@ -40,4 +40,5 @@ export enum ConversionTableHead {
 	POINTS = "Points",
 	CONVERSION_RATE = "Conversion rate",
 	MILES = "Miles",
+	DELETE_ICON = ""
 }

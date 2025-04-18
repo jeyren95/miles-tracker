@@ -5,9 +5,10 @@ import clsx from "clsx";
 function TableCell({
 	children,
 	className,
+	...props
 }: ComponentProps<typeof MuiTableCell>) {
 	return (
-		<MuiTableCell className={clsx("table__cell", className)}>
+		<MuiTableCell className={clsx("table__cell", className)} {...props}>
 			{children}
 		</MuiTableCell>
 	);

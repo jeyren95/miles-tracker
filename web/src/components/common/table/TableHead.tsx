@@ -5,9 +5,10 @@ import clsx from "clsx";
 function TableHead({
 	children,
 	className,
+	...props
 }: ComponentProps<typeof MuiTableHead>) {
 	return (
-		<MuiTableHead className={clsx("table__head", className)}>
+		<MuiTableHead className={clsx("table__head", className)} {...props}>
 			{children}
 		</MuiTableHead>
 	);
