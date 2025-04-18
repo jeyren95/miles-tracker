@@ -13,25 +13,8 @@ import { Button, IconButton } from "./common/button";
 import {
 	type GoalsTableProps,
 	GoalsTableHead,
-	ClassType,
-	TripType,
 } from "../types/goals";
-import { TRIP_TYPE_TO_TEXT, CLASS_TYPE_TO_TEXT } from "../utils";
 
-const CLASS_TYPE_OPTIONS = [
-	{ value: "", text: "--Select flight class--" },
-	...Object.values(ClassType).map((c) => ({
-		value: c,
-		text: CLASS_TYPE_TO_TEXT[c],
-	})),
-];
-const TRIP_TYPE_OPTIONS = [
-	{ value: "", text: "--Select trip type--" },
-	...Object.values(TripType).map((t) => ({
-		value: t,
-		text: TRIP_TYPE_TO_TEXT[t],
-	})),
-];
 const CITY_OPTIONS = [
 	{ value: "", text: "--Select city--" },
 	...["Singapore - SIN", "Tokyo (Haneda Intl) - HND"].map((c) => ({
@@ -77,25 +60,13 @@ function GoalsTable({
 							</Select>
 						</TableCell>
 						<TableCell>
-							<Select
-								name="classType"
-								onChange={(e) => onSelectChange(e, r)}
-								options={CLASS_TYPE_OPTIONS}
+							<Button
+								variant="outlined"
+								color="info"
+								type="button"
+								className="goals-page__view-progression-button"
+								onClick={() => onViewProgressionClick(r)}
 							>
-								{r.classType}
-							</Select>
-						</TableCell>
-						<TableCell>
-							<Select
-								name="tripType"
-								onChange={(e) => onSelectChange(e, r)}
-								options={TRIP_TYPE_OPTIONS}
-							>
-								{r.tripType}
-							</Select>
-						</TableCell>
-						<TableCell>
-							<Button type="button" onClick={() => onViewProgressionClick(r)}>
 								View Progression
 							</Button>
 						</TableCell>

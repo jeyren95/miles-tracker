@@ -10,7 +10,7 @@
 }
 
 .home-page__button {
-	@apply w-14 sm:w-18 py-2 text-xs sm:text-sm rounded-md;
+	@apply normal-case;
 }
 
 .home-page__miles-summary {
@@ -30,8 +30,8 @@
 	@apply flex gap-2 md:gap-5;
 }
 
-.goals-page__button {
-	@apply w-14 sm:w-18 py-2 text-xs sm:text-sm rounded-md;
+.goals-page__button, .goals-page__view-progression-button {
+	@apply normal-case; 
 }
 
 .goals-page__goals-table-header {
@@ -58,8 +58,8 @@
 }
 
 /** Buttons **/
-.button--bg-blue {
-	@apply bg-blue-500;
+.button--bg-green {
+	@apply border-green-500;
 }
 
 .button--bg-purple {

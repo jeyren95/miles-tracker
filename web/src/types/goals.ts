@@ -22,9 +22,7 @@ export enum TripType {
 export enum GoalsTableHead {
 	ORIGIN = "Origin",
 	DESTINATION = "Destination",
-	CLASS_TYPE = "Flight class",
-	TRIP_TYPE = "Trip type",
-	VIEW_PROGRESSION = "",
+	VIEW_PROGRESSION = "Progression",
 	DELETE_ICON = "",
 }
 

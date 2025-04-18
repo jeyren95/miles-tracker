@@ -1,4 +1,8 @@
 import { type ChangeEvent, useReducer } from "react";
+import {
+	AddCircleOutline as AddCircleOutlineIcon,
+	RestartAlt as RestartAltIcon,
+} from "@mui/icons-material";
 
 import ConversionTable from "../components/ConversionTable";
 import { Button } from "../components/common/button";
@@ -35,7 +39,10 @@ function HomePage() {
 			: 0;
 		const miles = conversionRate * Number(row.points);
 		const payload: ConversionTableRowData = { ...row, conversionRate, miles };
-		const action: ReducerAction<ConversionTableActionType, ConversionTableRowData> = {
+		const action: ReducerAction<
+			ConversionTableActionType,
+			ConversionTableRowData
+		> = {
 			type: ConversionTableActionType.UPDATE,
 			payload,
 		};
@@ -56,7 +63,10 @@ function HomePage() {
 			payload = { ...row, points, miles };
 		}
 
-		const action: ReducerAction<ConversionTableActionType, ConversionTableRowData> = {
+		const action: ReducerAction<
+			ConversionTableActionType,
+			ConversionTableRowData
+		> = {
 			type: ConversionTableActionType.UPDATE,
 			payload,
 		};
@@ -64,7 +74,10 @@ function HomePage() {
 	}
 
 	function handleDelete(payload: ConversionTableRowData) {
-		const action: ReducerAction<ConversionTableActionType, ConversionTableRowData> = {
+		const action: ReducerAction<
+			ConversionTableActionType,
+			ConversionTableRowData
+		> = {
 			type: ConversionTableActionType.DELETE,
 			payload,
 		};
@@ -72,7 +85,10 @@ function HomePage() {
 	}
 
 	function handleInsert() {
-		const action: ReducerAction<ConversionTableActionType, ConversionTableRowData> = {
+		const action: ReducerAction<
+			ConversionTableActionType,
+			ConversionTableRowData
+		> = {
 			type: ConversionTableActionType.INSERT,
 			payload: { ...DEFAULT_ROW, id: id++ },
 		};
@@ -81,7 +97,10 @@ function HomePage() {
 
 	function handleReset() {
 		id = 1;
-		const action: ReducerAction<ConversionTableActionType, ConversionTableRowData> = {
+		const action: ReducerAction<
+			ConversionTableActionType,
+			ConversionTableRowData
+		> = {
 			type: ConversionTableActionType.RESET,
 			payload: { ...DEFAULT_ROW, id: id++ },
 		};
@@ -100,16 +119,22 @@ function HomePage() {
 
 				<div className="home-page__action-buttons">
 					<Button
-						className="home-page__button button--bg-blue button--text-white"
+						variant="outlined"
+						className="home-page__button" 
 						type="button"
 						onClick={handleInsert}
+						endIcon={<AddCircleOutlineIcon />}
+						color="success"
 					>
 						Add
 					</Button>
 					<Button
-						className="home-page__button button--bg-purple button--text-white"
+						variant="outlined"
+						className="home-page__button"
 						type="button"
 						onClick={handleReset}
+						endIcon={<RestartAltIcon />}
+						color="secondary"
 					>
 						Reset
 					</Button>

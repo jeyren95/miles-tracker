@@ -1,15 +1,16 @@
-import { type ComponentPropsWithoutRef } from "react";
+import { type ComponentProps } from "react";
+import { Button as MuiButton } from "@mui/material";
 import clsx from "clsx";
 
 function Button({
 	children,
 	className,
 	...props
-}: ComponentPropsWithoutRef<"button">) {
+}: ComponentProps<typeof MuiButton>) {
 	return (
-		<button className={clsx("button", className)} {...props}>
+		<MuiButton className={clsx("button", className)} {...props}>
 			{children}
-		</button>
+		</MuiButton>
 	);
 }
 
