@@ -30,3 +30,8 @@ export const CLASS_TYPE_TO_TEXT: Record<ClassType, string> ={
 	[ClassType.BUSINESS]: "Business",
 	[ClassType.FIRST_CLASS]: "First class",
 }
+
+export function calculatePercentageProgress(milesAcquired: number, milesRequired: number) {
+	const progress = Math.floor((milesAcquired / milesRequired) * 100);
+	return progress;
+}

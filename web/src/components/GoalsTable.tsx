@@ -67,7 +67,7 @@ function GoalsTable({
 								className="goals-page__view-progression-button"
 								onClick={() => onViewProgressionClick(r)}
 							>
-								View Progression
+								View Progress
 							</Button>
 						</TableCell>
 						<TableCell>

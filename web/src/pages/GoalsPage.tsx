@@ -6,7 +6,7 @@ import {
 
 import GoalsTable from "../components/GoalsTable";
 import { Button } from "../components/common/button";
-import ProgressionModal from "../components/ProgressionModal";
+import ProgressDialog from "../components/ProgressDialog";
 
 import { goalsTableReducer } from "../reducers";
 import { type GoalsTableRowData, GoalsTableActionType } from "../types/goals";
@@ -17,8 +17,6 @@ const DEFAULT_ROW: GoalsTableRowData = {
 	id: id++,
 	origin: "",
 	destination: "",
-	classType: "",
-	tripType: "",
 };
 
 function GoalsPage() {
@@ -115,8 +113,9 @@ function GoalsPage() {
 					/>
 				</div>
 				{isModalOpen && (
-					<ProgressionModal
+					<ProgressDialog
 						onClose={handleCloseModal}
+						open={isModalOpen}
 						selectedRow={selectedRow}
 					/>
 				)}

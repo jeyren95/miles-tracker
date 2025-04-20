@@ -1,4 +1,5 @@
-import { type ChangeEvent } from "react";
+import { type ChangeEvent, type ComponentProps } from "react";
+import { Dialog as MuiDialog } from "@mui/material";
 
 export enum GoalsTableActionType {
 	INSERT,
@@ -8,21 +9,21 @@ export enum GoalsTableActionType {
 }
 
 export enum ClassType {
-	ECONOMY = "EN",
-	PREMIUM_ECONOMY = "PN",
-	BUSINESS = "BN",
-	FIRST_CLASS = "FN",
+	ECONOMY = "Economy",
+	PREMIUM_ECONOMY = "Premium economy",
+	BUSINESS = "Business",
+	FIRST_CLASS = "First class",
 }
 
 export enum TripType {
-	ONE_WAY = "O",
-	RETURN = "R",
+	ONE_WAY = "One-way",
+	RETURN = "Return",
 }
 
 export enum GoalsTableHead {
 	ORIGIN = "Origin",
 	DESTINATION = "Destination",
-	VIEW_PROGRESSION = "Progression",
+	VIEW_PROGRESS = "Progress",
 	DELETE_ICON = "",
 }
 
@@ -30,8 +31,6 @@ export type GoalsTableRowData = {
 	id: number;
 	origin: string;
 	destination: string;
-	classType: ClassType | "";
-	tripType: TripType | "";
 };
 
 export type GoalsTableProps = {
@@ -44,16 +43,17 @@ export type GoalsTableProps = {
 	onViewProgressionClick: (r: GoalsTableRowData) => void;
 };
 
-export type ProgressionModalProps = {
+export type ProgressDialogProps = ComponentProps<typeof MuiDialog> & {
 	selectedRow: GoalsTableRowData | null;
-	onClose: () => void;
 };
 
-export type GetMilesRes = {
-	classType: ClassType;
+export type Miles = {
 	tripType: TripType;
-	miles: {
-		description: string;
-		amount: number;
-	}[];
+	classType: ClassType;
+	description: string;
+	miles: number;
 };
+
+export type GetMilesRes = Record<TripType, Miles[]>;
+
+export type ClassProgressPaperProps = Pick<Miles, "description" | "miles">;

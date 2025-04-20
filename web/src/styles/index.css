@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .main {
-	@apply h-screen px-5 sm:px-20;
+	@apply h-screen px-5 sm:px-40;
 }
 
 /** Home page **/
@@ -30,8 +30,9 @@
 	@apply flex gap-2 md:gap-5;
 }
 
-.goals-page__button, .goals-page__view-progression-button {
-	@apply normal-case; 
+.goals-page__button,
+.goals-page__view-progression-button {
+	@apply normal-case;
 }
 
 .goals-page__goals-table-header {
@@ -40,6 +41,31 @@
 
 .goals-page__goals-table-title {
 	@apply text-lg sm:text-xl;
+}
+
+.goals-page__progress-dialog .MuiDialog-paper {
+	@apply py-10 px-5;
+}
+
+.goals-page__progress-dialog-content {
+	@apply flex flex-wrap gap-5;
+}
+
+.goals-page__class-progress {
+	@apply p-6 w-sm;
+}
+
+.goals-page__progress-bar {
+	@apply flex items-center;
+}
+
+.goals-page__linear-progress {
+	@apply w-full mr-3;
+}
+
+.goals-page__class-description,
+.goals-page__raw-miles {
+	@apply mb-3;
 }
 
 /** Nav menu **/
