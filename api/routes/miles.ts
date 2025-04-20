@@ -25,6 +25,7 @@ export async function getMiles(
     const error = createHttpError.BadRequest("Missing origin or destination");
     res.statusCode = error.statusCode;
     res.end(JSON.stringify(error));
+    return;
   }
 
   const classTypes = Object.values(ClassType);
