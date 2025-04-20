@@ -19,7 +19,9 @@ export type GetKrisFlyerMilesBody = {
 	};
 };
 
-export type GetKrisFlyerMilesRes = GetKrisFlyerMilesSuccess | GetKrisFlyerMilesError;
+export type GetKrisFlyerMilesRes =
+	| GetKrisFlyerMilesSuccess
+	| GetKrisFlyerMilesError;
 
 export type GetKrisFlyerMilesSuccess = {
 	status: string;
@@ -36,22 +38,20 @@ export type GetKrisFlyerMilesSuccess = {
 			note: string;
 			specialNote: string;
 		}[];
-	}
+	};
 	ErrorCode?: string;
 	ErrorMessage?: string;
-}
+};
 
 export type GetKrisFlyerMilesError = {
 	statusCode: number;
 	error: string;
 	message: string;
-}
+};
 
 export type GetMilesRes = {
-	classType: ClassType;
-	tripType: TripType;
-	miles: {
-		description: string;
-		amount: number;
-	}[];
-}
+	classType: string;
+	tripType: string;
+	miles: number;
+	description: string;
+}[];
