@@ -6,22 +6,25 @@ import GoalsPage from "./pages/GoalsPage";
 
 import NavTabs from "./components/NavTabs";
 
+import { UserContextProvider } from "./context";
 import { Pathname } from "./types/common";
 
 function App() {
-  return (
-    <StyledEngineProvider injectFirst>
-      <div className="main">
-        <BrowserRouter>
-          <NavTabs />
-          <Routes>
-            <Route path={Pathname.HOME} element={<HomePage />} />
-            <Route path={Pathname.GOALS} element={<GoalsPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </StyledEngineProvider>
-  );
+	return (
+		<StyledEngineProvider injectFirst>
+			<UserContextProvider>
+				<div className="main">
+					<BrowserRouter>
+						<NavTabs />
+						<Routes>
+							<Route path={Pathname.HOME} element={<HomePage />} />
+							<Route path={Pathname.GOALS} element={<GoalsPage />} />
+						</Routes>
+					</BrowserRouter>
+				</div>
+			</UserContextProvider>
+		</StyledEngineProvider>
+	);
 }
 
 export default App;

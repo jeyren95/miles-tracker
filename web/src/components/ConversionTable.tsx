@@ -43,6 +43,7 @@ function ConversionTable({
 					<TableRow hover key={r.id}>
 						<TableCell>
 							<Select
+								value={r.bank}
 								options={BANK_OPTIONS}
 								onChange={(e) => onBankSelectChange(e, r)}
 							/>

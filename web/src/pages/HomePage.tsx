@@ -1,4 +1,4 @@
-import { type ChangeEvent, useReducer } from "react";
+import { type ChangeEvent, useReducer, useContext } from "react";
 import {
 	AddCircleOutline as AddCircleOutlineIcon,
 	RestartAlt as RestartAltIcon,
@@ -14,9 +14,10 @@ import {
 	Bank,
 	ConversionTableActionType,
 } from "../types/home";
-import { CONVERSION_RATES } from "../utils";
+import { getLocalStorage, setLocalStorage, CONVERSION_RATES } from "../utils";
+import { UserContext } from "../context";
 
-let id = 1;
+let id = getLocalStorage<number>("conversionTableRowId") || 1;
 const DEFAULT_ROW: ConversionTableRowData = {
 	id: id++,
 	bank: "",
@@ -25,10 +26,16 @@ const DEFAULT_ROW: ConversionTableRowData = {
 	miles: 0,
 };
 
+const initialTableData = getLocalStorage<ConversionTableRowData[]>(
+	"conversionTableRowData",
+) || [DEFAULT_ROW];
+
 function HomePage() {
-	const [tableData, dispatch] = useReducer(conversionTableReducer, [
-		DEFAULT_ROW,
-	]);
+	const [tableData, dispatch] = useReducer(
+		conversionTableReducer,
+		initialTableData,
+	);
+	const { setUser } = useContext(UserContext) || {};
 
 	function handleBankSelectChange(
 		e: ChangeEvent<HTMLSelectElement>,
@@ -38,7 +45,12 @@ function HomePage() {
 			? CONVERSION_RATES[e.target.value as Bank]
 			: 0;
 		const miles = conversionRate * Number(row.points);
-		const payload: ConversionTableRowData = { ...row, conversionRate, miles };
+		const payload: ConversionTableRowData = {
+			...row,
+			bank: e.target.value as Bank,
+			conversionRate,
+			miles,
+		};
 		const action: ReducerAction<
 			ConversionTableActionType,
 			ConversionTableRowData
@@ -47,6 +59,10 @@ function HomePage() {
 			payload,
 		};
 		dispatch(action);
+
+		const milesSum = tableData.reduce((acc, curr) => acc + curr.miles, 0);
+		setUser?.({ totalMiles: milesSum });
+		setLocalStorage("user", { totalMiles: milesSum });
 	}
 
 	function handlePointsInputChange(
@@ -71,6 +87,10 @@ function HomePage() {
 			payload,
 		};
 		dispatch(action);
+
+		const milesSum = tableData.reduce((acc, curr) => acc + curr.miles, 0);
+		setUser?.({ totalMiles: milesSum });
+		setLocalStorage("user", { totalMiles: milesSum });
 	}
 
 	function handleDelete(payload: ConversionTableRowData) {
@@ -82,6 +102,10 @@ function HomePage() {
 			payload,
 		};
 		dispatch(action);
+
+		const milesSum = tableData.reduce((acc, curr) => acc + curr.miles, 0);
+		setUser?.({ totalMiles: milesSum });
+		setLocalStorage("user", { totalMiles: milesSum });
 	}
 
 	function handleInsert() {
@@ -93,6 +117,7 @@ function HomePage() {
 			payload: { ...DEFAULT_ROW, id: id++ },
 		};
 		dispatch(action);
+		setLocalStorage("conversionTableRowId", id);
 	}
 
 	function handleReset() {
@@ -105,6 +130,10 @@ function HomePage() {
 			payload: { ...DEFAULT_ROW, id: id++ },
 		};
 		dispatch(action);
+		setLocalStorage("conversionTableRowId", id);
+
+		setUser?.({ totalMiles: 0 });
+		setLocalStorage("user", { totalMiles: 0 });
 	}
 
 	const milesSum = tableData.reduce((acc, curr) => acc + curr.miles, 0);
@@ -120,7 +149,7 @@ function HomePage() {
 				<div className="home-page__action-buttons">
 					<Button
 						variant="outlined"
-						className="home-page__button" 
+						className="home-page__button"
 						type="button"
 						onClick={handleInsert}
 						endIcon={<AddCircleOutlineIcon />}

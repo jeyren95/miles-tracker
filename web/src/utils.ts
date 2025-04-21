@@ -17,21 +17,34 @@ export function convertPointsToMiles(points: number, bank: Bank) {
 export const PATHNAME_TO_TEXT: Record<Pathname, string> = {
 	[Pathname.HOME]: "Home",
 	[Pathname.GOALS]: "Your goals",
-}
+};
 
 export const TRIP_TYPE_TO_TEXT: Record<TripType, string> = {
 	[TripType.RETURN]: "Return",
 	[TripType.ONE_WAY]: "One-way",
-}
+};
 
-export const CLASS_TYPE_TO_TEXT: Record<ClassType, string> ={
+export const CLASS_TYPE_TO_TEXT: Record<ClassType, string> = {
 	[ClassType.ECONOMY]: "Economy",
 	[ClassType.PREMIUM_ECONOMY]: "Premium economy",
 	[ClassType.BUSINESS]: "Business",
 	[ClassType.FIRST_CLASS]: "First class",
-}
+};
 
-export function calculatePercentageProgress(milesAcquired: number, milesRequired: number) {
+export function calculatePercentageProgress(
+	milesAcquired: number,
+	milesRequired: number,
+) {
 	const progress = Math.floor((milesAcquired / milesRequired) * 100);
 	return progress;
+}
+
+export function setLocalStorage<T>(key: string, value: T) {
+	const stringifiedValue = JSON.stringify(value);
+	localStorage.setItem(key, stringifiedValue);
+}
+
+export function getLocalStorage<T>(key: string): T | null {
+	const value = localStorage.getItem(key);
+	return value ? JSON.parse(value) : null;
 }
