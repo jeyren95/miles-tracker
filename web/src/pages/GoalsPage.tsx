@@ -11,7 +11,7 @@ import ProgressDialog from "../components/ProgressDialog";
 import { goalsTableReducer } from "../reducers";
 import { type GoalsTableRowData, GoalsTableActionType } from "../types/goals";
 import { type ReducerAction } from "../types/common";
-import { getLocalStorage } from "../utils";
+import { getLocalStorage, setLocalStorage } from "../utils";
 
 let id = getLocalStorage<number>("goalsTableRowId") || 1;
 const DEFAULT_ROW: GoalsTableRowData = {
@@ -35,6 +35,7 @@ function GoalsPage() {
 			type: GoalsTableActionType.INSERT,
 			payload: { ...DEFAULT_ROW, id: id++ },
 		};
+		setLocalStorage("goalsTableRowId", id);
 		dispatch(action);
 	}
 
@@ -67,6 +68,8 @@ function GoalsPage() {
 			type: GoalsTableActionType.RESET,
 			payload: { ...DEFAULT_ROW },
 		};
+
+		setLocalStorage("goalsTableRowId", id);
 		dispatch(action);
 	}
 
