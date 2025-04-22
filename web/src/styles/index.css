@@ -47,25 +47,36 @@
 	@apply py-10 px-5;
 }
 
+.goals-page__progress-dialog-title {
+	@apply flex justify-between;
+}
+
+.goals-page__accumulated-miles {
+	@apply underline;
+}
+
+.goals-page__trip-type-toggle {
+	@apply text-sm;
+}
+
 .goals-page__progress-dialog-content {
-	@apply flex flex-wrap gap-5;
+	@apply flex flex-wrap gap-8;
 }
 
-.goals-page__class-progress {
-	@apply p-6 w-sm;
+.goals-page__class-progress-card {
+	@apply p-3 w-md;
 }
 
-.goals-page__progress-bar {
+.goals-page__class-progress-card .MuiCardHeader-title {
+	@apply text-lg;
+}
+
+.goals-page__class-progress-card-content {
 	@apply flex items-center;
 }
 
-.goals-page__linear-progress {
-	@apply w-full mr-3;
-}
-
-.goals-page__class-description,
-.goals-page__raw-miles {
-	@apply mb-3;
+.goals-page__progress-bar {
+	@apply w-full mr-3 h-3 rounded-md;
 }
 
 /** Nav menu **/
