@@ -46,6 +46,7 @@ function GoalsTable({
 								name="origin"
 								onChange={(e) => onSelectChange(e, r)}
 								options={CITY_OPTIONS}
+								value={r.origin}
 							>
 								{r.origin}
 							</Select>
@@ -55,6 +56,7 @@ function GoalsTable({
 								name="destination"
 								onChange={(e) => onSelectChange(e, r)}
 								options={CITY_OPTIONS}
+								value={r.destination}
 							>
 								{r.destination}
 							</Select>
