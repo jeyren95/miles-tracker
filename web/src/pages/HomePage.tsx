@@ -14,7 +14,7 @@ import {
 	Bank,
 	ConversionTableActionType,
 } from "../types/home";
-import { getLocalStorage, setLocalStorage, CONVERSION_RATES } from "../utils";
+import { parseNumber, getLocalStorage, setLocalStorage, CONVERSION_RATES } from "../utils";
 import { UserContext } from "../context";
 
 let id = getLocalStorage<number>("conversionTableRowId") || 1;
@@ -143,7 +143,7 @@ function HomePage() {
 			<div className="home-page__miles-summary">
 				<h1 className="home-page__miles-summary-title">
 					You have accumulated
-					<span className="home-page__miles-sum">{milesSum}</span> miles.
+					<span className="home-page__miles-sum">{parseNumber(milesSum)}</span> miles.
 				</h1>
 
 				<div className="home-page__action-buttons">

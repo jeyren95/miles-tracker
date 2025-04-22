@@ -16,6 +16,7 @@ import {
 	ConversionTableHead,
 	type ConversionTableProps,
 } from "../types/home";
+import { parseNumber } from "../utils"
 
 const BANK_OPTIONS = [
 	{ value: "", text: "--Select a bank--" },
@@ -52,14 +53,13 @@ function ConversionTable({
 							<Input
 								onChange={(e) => onPointsInputChange(e, r)}
 								type="number"
-								value={r.points}
 								name="points"
 								id="points"
 								min={MIN_POINTS}
 							/>
 						</TableCell>
 						<TableCell>{r.conversionRate}</TableCell>
-						<TableCell>{r.miles}</TableCell>
+						<TableCell>{parseNumber(r.miles)}</TableCell>
 						<TableCell>
 							{tableData.length > 1 && (
 								<IconButton

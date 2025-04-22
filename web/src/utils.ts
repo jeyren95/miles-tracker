@@ -48,3 +48,7 @@ export function getLocalStorage<T>(key: string): T | null {
 	const value = localStorage.getItem(key);
 	return value ? JSON.parse(value) : null;
 }
+
+export function parseNumber(number: number) {
+	return number.toLocaleString("en-US");
+}

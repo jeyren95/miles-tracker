@@ -14,6 +14,7 @@ import {
   TripType,
 } from "../types/goals";
 import { UserContext } from "../context";
+import { parseNumber } from "../utils"
 import { useFetchData } from "../hooks/useFetchData";
 
 const DUMMY_DATA = [
@@ -135,10 +136,10 @@ function ProgressDialog({ onClose, open, selectedRow }: ProgressDialogProps) {
     >
       <MuiDialogTitle className="goals-page__progress-dialog-title">
         <div>
-          You have accumulated{" "}
+          You have accumulated
           <span className="goals-page__accumulated-miles">
-            {user?.totalMiles}
-          </span>{" "}
+            {parseNumber(user?.totalMiles || 0)}
+          </span>
           miles.
         </div>
         <div className="goals-page__trip-type-toggle">
