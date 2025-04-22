@@ -11,16 +11,20 @@ import ProgressDialog from "../components/ProgressDialog";
 import { goalsTableReducer } from "../reducers";
 import { type GoalsTableRowData, GoalsTableActionType } from "../types/goals";
 import { type ReducerAction } from "../types/common";
+import { getLocalStorage } from "../utils";
 
-let id = 1;
+let id = getLocalStorage<number>("goalsTableRowId") || 1;
 const DEFAULT_ROW: GoalsTableRowData = {
 	id: id++,
 	origin: "",
 	destination: "",
 };
+const initialTableData = getLocalStorage<GoalsTableRowData[]>(
+	"goalsTableRowData",
+) || [DEFAULT_ROW];
 
 function GoalsPage() {
-	const [tableData, dispatch] = useReducer(goalsTableReducer, [DEFAULT_ROW]);
+	const [tableData, dispatch] = useReducer(goalsTableReducer, initialTableData);
 	const [selectedRow, setSelectedRow] = useState<GoalsTableRowData | null>(
 		null,
 	);

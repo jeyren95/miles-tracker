@@ -10,30 +10,30 @@ export function conversionTableReducer(
 	state: ConversionTableRowData[],
 	action: ReducerAction<ConversionTableActionType, ConversionTableRowData>,
 ) {
+	let updatedState: ConversionTableRowData[];
+
 	switch (action.type) {
 		case ConversionTableActionType.INSERT:
-			const stateAfterInsertion = [...state, action.payload];
-			setLocalStorage("conversionTableRowData", stateAfterInsertion);
-			return stateAfterInsertion;
+			updatedState = [...state, action.payload];
+			setLocalStorage("conversionTableRowData", updatedState);
+			return updatedState;
 		case ConversionTableActionType.DELETE:
-			const stateAfterDeletion = state.filter(
-				(s) => s.id !== action.payload.id,
-			);
-			setLocalStorage("conversionTableRowData", stateAfterDeletion);
-			return stateAfterDeletion;
+			updatedState = state.filter((s) => s.id !== action.payload.id);
+			setLocalStorage("conversionTableRowData", updatedState);
+			return updatedState;
 		case ConversionTableActionType.UPDATE:
-			const stateAfterUpdate = state.map((s) => {
+			updatedState = state.map((s) => {
 				if (s.id === action.payload.id) {
 					return action.payload;
 				}
 				return s;
 			});
-			setLocalStorage("conversionTableRowData", stateAfterUpdate);
-			return stateAfterUpdate;
+			setLocalStorage("conversionTableRowData", updatedState);
+			return updatedState;
 		case ConversionTableActionType.RESET:
-			const stateAfterReset = [action.payload];
-			setLocalStorage("conversionTableRowData", stateAfterReset);
-			return stateAfterReset;
+			updatedState = [action.payload];
+			setLocalStorage("conversionTableRowData", updatedState);
+			return updatedState;
 		default:
 			return state;
 	}
@@ -43,20 +43,30 @@ export function goalsTableReducer(
 	state: GoalsTableRowData[],
 	action: ReducerAction<GoalsTableActionType, GoalsTableRowData>,
 ) {
+	let updatedState: GoalsTableRowData[];
+
 	switch (action.type) {
 		case GoalsTableActionType.INSERT:
-			return [...state, action.payload];
+			updatedState = [...state, action.payload];
+			setLocalStorage("goalsTableRowData", updatedState);
+			return updatedState;
 		case GoalsTableActionType.UPDATE:
-			return state.map((s) => {
+			updatedState = state.map((s) => {
 				if (s.id === action.payload.id) {
 					return action.payload;
 				}
 				return s;
 			});
+			setLocalStorage("goalsTableRowData", updatedState);
+			return updatedState;
 		case GoalsTableActionType.DELETE:
-			return state.filter((s) => s.id !== action.payload.id);
+			updatedState = state.filter((s) => s.id !== action.payload.id);
+			setLocalStorage("goalsTableRowData", updatedState);
+			return updatedState;
 		case GoalsTableActionType.RESET:
-			return [action.payload];
+			updatedState = [action.payload];
+			setLocalStorage("goalsTableRowData", updatedState);
+			return updatedState;
 		default:
 			return state;
 	}
