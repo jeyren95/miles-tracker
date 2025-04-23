@@ -14,10 +14,11 @@ import {
 	type GoalsTableProps,
 	GoalsTableHead,
 } from "../types/goals";
+import airports from "../../airports.json";
 
-const CITY_OPTIONS = [
+const AIRPORT_OPTIONS = [
 	{ value: "", text: "--Select city--" },
-	...["Singapore - SIN", "Tokyo (Haneda Intl) - HND"].map((c) => ({
+	...airports.map((c) => ({
 		value: c,
 		text: c,
 	})),
@@ -45,7 +46,7 @@ function GoalsTable({
 							<Select
 								name="origin"
 								onChange={(e) => onSelectChange(e, r)}
-								options={CITY_OPTIONS}
+								options={AIRPORT_OPTIONS}
 								value={r.origin}
 							>
 								{r.origin}
@@ -55,7 +56,7 @@ function GoalsTable({
 							<Select
 								name="destination"
 								onChange={(e) => onSelectChange(e, r)}
-								options={CITY_OPTIONS}
+								options={AIRPORT_OPTIONS}
 								value={r.destination}
 							>
 								{r.destination}

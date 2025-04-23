@@ -52,6 +52,7 @@ function ConversionTable({
 						<TableCell>
 							<Input
 								onChange={(e) => onPointsInputChange(e, r)}
+								value={r.points}
 								type="number"
 								name="points"
 								id="points"
