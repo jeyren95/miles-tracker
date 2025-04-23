@@ -36,7 +36,7 @@ export function calculatePercentageProgress(
 	milesRequired: number,
 ) {
 	const progress = Math.floor((milesAcquired / milesRequired) * 100);
-	return progress;
+	return progress > 100 ? 100 : progress;
 }
 
 export function setLocalStorage<T>(key: string, value: T) {

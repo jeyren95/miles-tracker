@@ -136,11 +136,11 @@ function ProgressDialog({ onClose, open, selectedRow }: ProgressDialogProps) {
     >
       <MuiDialogTitle className="goals-page__progress-dialog-title">
         <div>
-          You have accumulated
+          You have accumulated{" "} 
           <span className="goals-page__accumulated-miles">
             {parseNumber(user?.totalMiles || 0)}
           </span>
-          miles.
+					{" "}miles.
         </div>
         <div className="goals-page__trip-type-toggle">
           <span>{TripType.ONE_WAY}</span>

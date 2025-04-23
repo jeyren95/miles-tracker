@@ -9,6 +9,7 @@ import {
 import { type ClassProgressPaperProps } from "../types/goals";
 import { calculatePercentageProgress } from "../utils";
 import { UserContext } from "../context";
+import { parseNumber } from "../utils"
 
 function ClassProgressCard({ description, miles }: ClassProgressPaperProps) {
   const { user } = useContext(UserContext) || {};
@@ -18,7 +19,7 @@ function ClassProgressCard({ description, miles }: ClassProgressPaperProps) {
     <MuiCard className="goals-page__class-progress-card">
       <MuiCardHeader
         title={description}
-        subheader={`Miles required: ${miles}`}
+        subheader={`Miles required: ${parseNumber(miles)}`}
       />
       <MuiCardContent className="goals-page__class-progress-card-content">
         <MuiLinearProgress
