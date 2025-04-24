@@ -53,7 +53,9 @@ export async function getMiles(
 
 		// if SIA API is down
 		if (!responses[0].ok) {
-			const error = createHttpError.InternalServerError("Something went wrong, try again later");
+			const error = createHttpError.InternalServerError(
+				"Something went wrong, try again later",
+			);
 			res.statusCode = error.statusCode;
 			res.end(JSON.stringify(error));
 			return;
