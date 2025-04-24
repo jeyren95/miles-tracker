@@ -49,9 +49,13 @@ export type GetKrisFlyerMilesError = {
 	message: string;
 };
 
-export type GetMilesRes = {
+export type Miles = {
 	classType: string;
 	tripType: string;
 	miles: number;
 	description: string;
-}[];
+};
+
+export type GetMilesRes = {
+	miles: Miles[] | string;
+};
