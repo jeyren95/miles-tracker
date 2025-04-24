@@ -54,6 +54,6 @@ export type Miles = {
 	miles: number;
 };
 
-export type GetMilesRes = Record<TripType, Miles[]>;
+export type GetMilesRes = { miles: Miles[] | string };
 
 export type ClassProgressPaperProps = Pick<Miles, "description" | "miles">;

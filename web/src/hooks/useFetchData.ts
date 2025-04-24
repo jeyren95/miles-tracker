@@ -5,7 +5,7 @@ export function useFetchData<T>(endpoint: string) {
 	const [data, setData] = useState<T>();
 	const [error, setError] = useState("");
 
-	useEffect(() => {
+	useEffect(function() {
 		fetch(endpoint, {
 			headers: {
 				"Content-Type": "application/json",
@@ -13,15 +13,28 @@ export function useFetchData<T>(endpoint: string) {
 			},
 			method: "GET",
 		})
-			.then((res) => res.json())
-			.then((data) => setData(data))
-			.catch((err) => setError(err.message))
+			.then((res) => {
+				if (!res.ok) {
+					return res.json().then((data) => {
+						throw new Error(data.message);
+					});
+				}
+				return res.json();
+			})
+			.then((data: T) => setData(data))
+			.catch((err) => {
+				setError(err.message);
+			})
 			.finally(() => setIsLoading(false));
+
+		return function() {
+			setError("");
+		};
 	}, []);
 
 	return {
 		isLoading,
 		data,
 		error,
-	}
+	};
 }

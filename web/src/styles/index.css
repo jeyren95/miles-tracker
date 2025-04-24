@@ -59,6 +59,10 @@
 	@apply text-sm;
 }
 
+.goals-page__progress-dialog-loading {
+	@apply flex justify-center; 
+}
+
 .goals-page__progress-dialog-content {
 	@apply flex flex-wrap gap-8;
 }
