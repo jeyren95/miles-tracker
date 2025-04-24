@@ -51,14 +51,8 @@ export async function getMiles(
 	try {
 		const responses = await Promise.all(promises);
 
-		// if SIA API is down
 		if (!responses[0].ok) {
-			const error = createHttpError.InternalServerError(
-				"Something went wrong, try again later",
-			);
-			res.statusCode = error.statusCode;
-			res.end(JSON.stringify(error));
-			return;
+			throw new Error("Something went wrong, please try again later");
 		}
 
 		// this happens if either the origin or destination is invalid
@@ -98,7 +92,10 @@ export async function getMiles(
 			res.write(JSON.stringify(getMilesRes));
 		}
 	} catch (err) {
-		res.write(JSON.stringify(err));
+		const error = createHttpError.InternalServerError((err as Error).message);
+		res.statusCode = error.statusCode;
+		res.end(JSON.stringify(error));
+		return;
 	} finally {
 		res.end();
 	}
