@@ -51,6 +51,14 @@ export async function getMiles(
 	try {
 		const responses = await Promise.all(promises);
 
+		// if SIA API is down
+		if (!responses[0].ok) {
+			const error = createHttpError.InternalServerError("Something went wrong, try again later");
+			res.statusCode = error.statusCode;
+			res.end(JSON.stringify(error));
+			return;
+		}
+
 		// this happens if either the origin or destination is invalid
 		if (responses[0].status === 204) {
 			const error = createHttpError.BadRequest("Invalid origin or destination");
